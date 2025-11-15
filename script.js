@@ -518,28 +518,39 @@ window.addEventListener('load', () => {
 // ========================================
 
 function initEmailJS() {
-    // Initialize EmailJS with your public key
-    // Get your public key from: https://dashboard.emailjs.com/admin/account
-    emailjs.init('usOgKak_u4v48JbBS');
-    
+    // Attach form handler first so the form never does a normal submit
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', handleContactForm);
+    }
+
+    // Initialize EmailJS with your public key (if available)
+    // Get your public key from: https://dashboard.emailjs.com/admin/account
+    try {
+        if (window.emailjs && typeof emailjs.init === 'function') {
+            emailjs.init('usOgKak_u4v48JbBS');
+        } else {
+            console.warn('EmailJS library not available. Contact form will show an error or fallback.');
+        }
+    } catch (err) {
+        console.error('EmailJS init failed:', err);
     }
 }
 
 function handleContactForm(e) {
     e.preventDefault();
-    
+
     const submitBtn = document.getElementById('submit-btn');
     const formMessage = document.getElementById('form-message');
     const form = e.target;
-    
+
     // Disable button and show loading state
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-    formMessage.classList.add('hidden');
-    
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+    }
+    if (formMessage) formMessage.classList.add('hidden');
+
     // Prepare template parameters
     const templateParams = {
         name: document.getElementById('name').value,
@@ -547,7 +558,21 @@ function handleContactForm(e) {
         school_name: document.getElementById('school_name').value || 'Not specified',
         message: document.getElementById('message').value
     };
-    
+
+    // If EmailJS is not available, show a friendly error and do not submit the form normally
+    if (!window.emailjs || typeof emailjs.send !== 'function') {
+        if (formMessage) {
+            formMessage.classList.remove('hidden');
+            formMessage.className = 'p-4 rounded-lg text-sm font-medium bg-yellow-50 text-yellow-800 border border-yellow-200';
+            formMessage.textContent = '⚠️ Message service currently unavailable. Please try again later or email us directly.';
+        }
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+        }
+        return;
+    }
+
     // Send email using EmailJS with existing template
     emailjs.send('service_57oukya', 'template_xk0n3bm', templateParams)
         .then((response) => {
@@ -555,14 +580,16 @@ function handleContactForm(e) {
             formMessage.classList.remove('hidden');
             formMessage.className = 'p-4 rounded-lg text-sm font-medium bg-green-50 text-green-800 border border-green-200';
             formMessage.textContent = '✓ Message sent successfully! We\'ll get back to you soon.';
-            
+
             // Reset form
             form.reset();
-            
+
             // Reset button
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Message';
-            
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }
+
             // Hide message after 5 seconds
             setTimeout(() => {
                 formMessage.classList.add('hidden');
@@ -573,10 +600,12 @@ function handleContactForm(e) {
             formMessage.classList.remove('hidden');
             formMessage.className = 'p-4 rounded-lg text-sm font-medium bg-red-50 text-red-800 border border-red-200';
             formMessage.textContent = '✗ Error sending message. Please try again or contact us directly.';
-            
+
             // Reset button
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Message';
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }
         });
 }
 
