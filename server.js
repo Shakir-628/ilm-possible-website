@@ -1,7 +1,6 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
-const path = require('path');
 
 const app = express();
 const PORT = 8001;
@@ -24,11 +23,9 @@ const transporter = nodemailer.createTransport({
 });
 
 // Verify email configuration
-transporter.verify((error, success) => {
+transporter.verify((error) => {
     if (error) {
-        console.log('❌ Email configuration error:', error);
-    } else {
-        console.log('✅ Email server is ready to send messages');
+        console.error('Email service error:', error.message);
     }
 });
 
@@ -166,7 +163,7 @@ app.post('/api/contact', async (req, res) => {
         await transporter.sendMail(adminMailOptions);
         await transporter.sendMail(userMailOptions);
 
-        console.log(`✅ Contact form submission from ${name} (${email})`);
+        console.log(`Contact form submission from ${name} (${email})`);
 
         res.json({
             success: true,
@@ -189,13 +186,6 @@ app.get('/api/health', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log('🚀 ========================================');
-    console.log('🎓 ILM Possible Education - Marketing Website');
-    console.log('🚀 ========================================');
-    console.log(`📧 Email service running on port ${PORT}`);
-    console.log(`🌐 Website: http://localhost:${PORT}`);
-    console.log(`📬 Contact form endpoint: http://localhost:${PORT}/api/contact`);
-    console.log('✅ Ready to receive contact form submissions!');
-    console.log('========================================\n');
+    console.log(`Server running on http://localhost:${PORT}`);
 });
 

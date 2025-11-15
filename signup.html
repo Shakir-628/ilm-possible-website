@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - ILM Possible Education</title>
+    <meta name="description" content="Create your ILM Possible Education account to get started with our school management system.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%234F46E5;stop-opacity:1'/><stop offset='100%' style='stop-color:%238B5CF6;stop-opacity:1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><text x='50' y='70' font-size='60' font-weight='bold' text-anchor='middle' fill='white' font-family='Arial'>I</text></svg>" type="image/svg+xml">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#4F46E5',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            500: '#8B5CF6',
+                            600: '#7C3AED',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #4F46E5 0%, #8B5CF6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #4F46E5 0%, #8B5CF6 100%);
+            color: white;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+        }
+        .form-input {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: #4F46E5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            outline: none;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #9ca3af;
+            margin: 1.5rem 0;
+        }
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .divider::before {
+            margin-right: 1rem;
+        }
+        .divider::after {
+            margin-left: 1rem;
+        }
+        .plan-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .plan-card:hover {
+            border-color: #4F46E5;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.1);
+        }
+        .plan-card.selected {
+            border: 2px solid #4F46E5;
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="navbar bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="text-2xl font-bold gradient-text">ILM Possible</a>
+                    <span class="text-sm text-gray-500 hidden sm:block">Education</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#features" class="text-gray-700 hover:text-primary-600 font-medium">Features</a>
+                    <a href="index.html#modules" class="text-gray-700 hover:text-primary-600 font-medium">Modules</a>
+                    <a href="index.html#pricing" class="text-gray-700 hover:text-primary-600 font-medium">Pricing</a>
+                    <a href="index.html#contact" class="text-gray-700 hover:text-primary-600 font-medium">Contact</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="login.html" class="text-gray-700 hover:text-primary-600 font-medium">Login</a>
+                    <a href="signup.html" class="bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-4 py-2 rounded-lg font-medium hover:opacity-90 transition">Sign Up</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-primary-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html#features" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Features</a>
+                <a href="index.html#modules" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Modules</a>
+                <a href="index.html#pricing" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Pricing</a>
+                <a href="index.html#contact" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Contact</a>
+                <div class="border-t border-gray-200 my-2"></div>
+                <a href="login.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Login</a>
+                <a href="signup.html" class="block px-3 py-2 text-white bg-gradient-to-r from-primary-600 to-secondary-600 rounded-md text-center font-medium">
+                    Sign Up
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Add padding to account for fixed navbar -->
+    <div class="h-16"></div>
+
+    <!-- Main Content -->
+    <main class="flex-grow py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl font-bold text-gray-900">Get started with ILM Possible</h1>
+                <p class="mt-2 text-lg text-gray-600">Create your account and start managing your school efficiently</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="grid md:grid-cols-2">
+                    <!-- Signup Form -->
+                    <div class="p-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Create your account</h2>
+                        
+                        <form id="signupForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-1">First name</label>
+                                    <input type="text" id="first-name" name="first-name" required 
+                                           class="form-input" placeholder="John">
+                                </div>
+                                <div>
+                                    <label for="last-name" class="block text-sm font-medium text-gray-700 mb-1">Last name</label>
+                                    <input type="text" id="last-name" name="last-name" required 
+                                           class="form-input" placeholder="Doe">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email address</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="form-input" placeholder="you@yourschool.com">
+                            </div>
+                            
+                            <div>
+                                <label for="school-name" class="block text-sm font-medium text-gray-700 mb-1">School/Institution name</label>
+                                <input type="text" id="school-name" name="school-name" required 
+                                       class="form-input" placeholder="Acme High School">
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone number</label>
+                                <input type="tel" id="phone" name="phone" 
+                                       class="form-input" placeholder="+1 (555) 000-0000">
+                            </div>
+                            
+                            <div>
+                                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                                <input type="password" id="password" name="password" required 
+                                       class="form-input" placeholder="••••••••">
+                                <p class="mt-1 text-xs text-gray-500">Must be at least 8 characters</p>
+                            </div>
+                            
+                            <div>
+                                <label for="confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Confirm password</label>
+                                <input type="password" id="confirm-password" name="confirm-password" required 
+                                       class="form-input" placeholder="••••••••">
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="terms" name="terms" type="checkbox" required
+                                           class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="terms" class="font-medium text-gray-700">I agree to the <a href="#" class="text-primary-600 hover:text-primary-500">Terms of Service</a> and <a href="#" class="text-primary-600 hover:text-primary-500">Privacy Policy</a></label>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition">
+                                    Create account
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div class="divider">
+                            <span class="text-sm">Or sign up with</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3
+                        ">
+                            <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.12-1.47-1.12-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.93.68 1.88v2.78c0 .26.18.57.69.47C19.14 20.16 22 16.42 22 12c0-5.52-4.48-10-10-10z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0110 4.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.203 2.397.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.933.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.14 18.16 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Plan Selection -->
+                    <div class="bg-gray-50 p-8 border-l border-gray-200">
+                        <h3 class="text-lg font-medium text-gray-900 mb-6">Select your plan</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="plan-card p-4 cursor-pointer selected" data-plan="basic">
+                                <div class="flex items-center">
+                                    <input id="plan-basic" name="plan" type="radio" value="basic" class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300" checked>
+                                    <label for="plan-basic" class="ml-3 block">
+                                        <span class="block text-sm font-medium text-gray-900">Basic</span>
+                                        <span class="block text-sm text-gray-500">Perfect for small schools</span>
+                                    </label>
+                                    <div class="ml-auto text-right">
+                                        <span class="text-sm font-medium text-gray-900 text-base">PKR 5,000</span>
+                                        <span class="text-sm text-gray-500">/month</span>
+                                    </div>  
+                                </div>
+                            </div>
+                            
+                            <div class="plan-card p-4 cursor-pointer" data-plan="pro">
+                                <div class="flex items-center">
+                                    <input id="plan-pro" name="plan" type="radio" value="pro" class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300">
+                                    <label for="plan-pro" class="ml-3 block">
+                                        <span class="block text-sm font-medium text-gray-900">Pro</span>
+                                        <span class="block text-sm text-gray-500">Ideal for growing schools</span>
+                                    </label>
+                                    <div class="ml-auto text-right">
+                                        <span class="text-sm font-medium text-gray-900 text-base">PKR 15,000</span>
+                                        <span class="text-sm text-gray-500">/month</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="plan-card p-4 cursor-pointer" data-plan="enterprise">
+                                <div class="flex items-center">
+                                    <input id="plan-enterprise" name="plan" type="radio" value="enterprise" class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300">
+                                    <label for="plan-enterprise" class="ml-3 block">
+                                        <span class="block text-sm font-medium text-gray-900">Enterprise</span>
+                                        <span class="block text-sm text-gray-500">For large institutions</span>
+                                    </label>
+                                    <div class="ml-auto text-right">
+                                        <span class="text-sm font-medium text-gray-900 text-base">PKR 35,000</span>
+                                        <span class="text-sm text-gray-500">/month</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 p-4 bg-white rounded-lg border border-gray-200">
+                            <h4 class="text-sm font-medium text-gray-900 mb-2">What's included in all plans:</h4>
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex items-start">
+                                    <svg class="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Unlimited users & students</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>24/7 customer support</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Regular updates & new features</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="h-5 w-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>99.9% uptime guarantee</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mt-6 p-4 bg-primary-50 rounded-lg">
+                            <h4 class="text-sm font-medium text-primary-800 mb-1">14-day free trial</h4>
+                            <p class="text-xs text-primary-700">No credit card required. Get full access to all features during your trial.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <p class="text-sm text-gray-600">
+                    Need help choosing a plan? <a href="#" class="font-medium text-primary-600 hover:text-primary-500">Contact sales</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500">&copy; 2025 ILM Possible Education. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Privacy</span>
+                        <span class="text-sm">Privacy Policy</span>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Terms</span>
+                        <span class="text-sm">Terms of Service</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Plan selection
+        document.querySelectorAll('.plan-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Remove selected class from all cards
+                document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
+                // Add selected class to clicked card
+                this.classList.add('selected');
+                // Update radio button
+                const radio = this.querySelector('input[type="radio"]');
+                if (radio) radio.checked = true;
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                firstName: document.getElementById('first-name').value,
+                lastName: document.getElementById('last-name').value,
+                email: document.getElementById('email').value,
+                schoolName: document.getElementById('school-name').value,
+                phone: document.getElementById('phone').value,
+                password: document.getElementById('password').value,
+                plan: document.querySelector('input[name="plan"]:checked').value
+            };
+            
+            // Basic validation
+            if (formData.password !== document.getElementById('confirm-password').value) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            if (!document.getElementById('terms').checked) {
+                alert('You must agree to the terms and conditions');
+                return;
+            }
+            
+            try {
+                // Here you would typically make an API call to your backend
+                console.log('Signup attempt with:', formData);
+                
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                // Redirect to dashboard on success
+                window.location.href = 'dashboard.html';
+                
+            } catch (error) {
+                console.error('Signup failed:', error);
+                alert('Signup failed. Please try again.');
+            }
+        });
+
+        // Check if there's a plan parameter in the URL
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const plan = urlParams.get('plan');
+            
+            if (plan) {
+                const planElement = document.querySelector(`.plan-card[data-plan="${plan}"]`);
+                if (planElement) {
+                    planElement.click(); // Trigger the click event on the plan card
+                }
+            }
+        });
+    </script>
+</body>
+</html>

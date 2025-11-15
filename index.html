@@ -45,6 +45,9 @@
     
     <!-- Enhanced Styles -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js"></script>
 </head>
 <body class="bg-gray-50">
     <!-- Particle Background -->
@@ -58,11 +61,13 @@
                     <div class="text-2xl font-bold gradient-text">ILM Possible</div>
                     <span class="text-sm text-gray-500 hidden sm:block">Education</span>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#features" class="text-gray-700 hover:text-primary-600 font-medium transition">Features</a>
-                    <a href="#modules" class="text-gray-700 hover:text-primary-600 font-medium transition">Modules</a>
-                    <a href="#benefits" class="text-gray-700 hover:text-primary-600 font-medium transition">Benefits</a>
-                    <a href="#contact" class="text-gray-700 hover:text-primary-600 font-medium transition">Contact</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-700 hover:text-primary-600 font-medium">Features</a>
+                    <a href="#modules" class="text-gray-700 hover:text-primary-600 font-medium">Modules</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-primary-600 font-medium">Pricing</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary-600 font-medium">Contact</a>
+                    <a href="/login" class="text-gray-700 hover:text-primary-600 font-medium">Login</a>
+                    <a href="#pricing" class="bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition">Get Started</a>
                 </div>
                 <div class="flex items-center space-x-4">
                     <!-- Theme Toggle -->
@@ -70,10 +75,7 @@
                         <span id="theme-icon" class="theme-toggle-slider">☀️</span>
                     </button>
                     
-                    <a href="http://localhost:3000/login" class="hidden sm:inline-block text-primary-600 hover:text-primary-700 font-semibold transition">
-                        Login
-                    </a>
-                    <a href="http://localhost:3000/login" class="btn-primary">
+                    <a href="/login" class="btn-primary">
                         Get Started
                     </a>
                     
@@ -105,8 +107,8 @@
             <a href="#benefits" class="text-lg font-medium text-gray-700 hover:text-primary-600 transition py-2">Benefits</a>
             <a href="#contact" class="text-lg font-medium text-gray-700 hover:text-primary-600 transition py-2">Contact</a>
             <hr class="border-gray-200 my-4">
-            <a href="http://localhost:3000/login" class="text-lg font-medium text-primary-600 hover:text-primary-700 transition py-2">Login</a>
-            <a href="http://localhost:3000/login" class="btn-primary text-center">Get Started</a>
+            <a href="/login" class="text-lg font-medium text-primary-600 hover:text-primary-700 transition py-2">Login</a>
+            <a href="/login" class="btn-primary text-center">Get Started</a>
         </nav>
     </div>
 
@@ -123,7 +125,7 @@
                         Complete, modern solution for educational institutions. Streamline operations, enhance communication, and improve student outcomes.
                     </p>
                     <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-fade-in-up" style="animation-delay: 0.4s;">
-                        <a href="http://localhost:3000/login" class="btn-primary animate-pulse-glow">
+                        <a href="/login" class="btn-primary animate-pulse-glow">
                             Start Free Trial
                         </a>
                         <a href="#features" class="btn-secondary">
@@ -363,6 +365,155 @@
         </div>
     </section>
 
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Choose the perfect plan for your educational institution</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition">
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Basic</h3>
+                        <p class="text-gray-600 mb-6">Perfect for small schools</p>
+                        <div class="mb-8">
+                            <span class="text-5xl font-bold text-gray-900">PKR 5,000</span>
+                            <span class="text-gray-500">/month</span>
+                            <p class="text-sm text-gray-500 mt-2">Billed annually at PKR 55,000</p>
+                        </div>
+                        <a href="/signup?plan=basic" class="block w-full bg-gray-100 text-gray-800 font-medium py-3 px-6 rounded-lg hover:bg-gray-200 transition mb-6">
+                            Get Started
+                        </a>
+                        <ul class="space-y-3 text-left">
+                            <li class="flex items-center text-gray-700">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Up to 100 Students
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Basic Reports
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Email Support
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Popular Plan -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-primary-500 transform scale-105 relative">
+                    <div class="absolute top-0 right-0 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">MOST POPULAR</div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Pro</h3>
+                        <p class="text-gray-600 mb-6">Ideal for growing schools</p>
+                        <div class="mb-8">
+                            <span class="text-5xl font-bold text-gray-900">PKR 15,000</span>
+                            <span class="text-gray-500">/month</span>
+                            <p class="text-sm text-gray-500 mt-2">Billed annually at PKR 165,000</p>
+                        </div>
+                        <a href="/signup?plan=pro" class="block w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-medium py-3 px-6 rounded-lg hover:opacity-90 transition mb-6">
+                            Get Started
+                        </a>
+                        <ul class="space-y-3 text-left">
+                            <li class="flex items-center text-gray-700">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Up to 500 Students
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Advanced Analytics
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Priority Support
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                API Access
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition">
+                    <div class="p-8 text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
+                        <p class="text-gray-600 mb-6">For large institutions</p>
+                        <div class="mb-8">
+                            <span class="text-5xl font-bold text-gray-900">PKR 35,000</span>
+                            <span class="text-gray-500">/month</span>
+                            <p class="text-sm text-gray-500 mt-2">Billed annually at PKR 385,000</p>
+                        </div>
+                        <a href="/contact" class="block w-full bg-gray-100 text-gray-800 font-medium py-3 px-6 rounded-lg hover:bg-gray-200 transition mb-6">
+                            Contact Sales
+                        </a>
+                        <ul class="space-y-3 text-left">
+                            <li class="flex items-center text-gray-700">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Unlimited Students
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Custom Reports
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                24/7 Dedicated Support
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Custom Integrations
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Onboarding & Training
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-6">Need a custom solution? We've got you covered.</p>
+                <a href="#contact" class="inline-flex items-center text-primary-600 font-medium hover:text-primary-800">
+                    Contact our sales team
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Benefits Section -->
     <section id="benefits" class="py-20 bg-gradient-to-br from-primary-600 to-secondary-600 text-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -373,8 +524,8 @@
 
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="text-center scroll-reveal hover-lift">
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 bg-primary-100 dark:bg-white dark:bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary-600 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
@@ -383,8 +534,8 @@
                 </div>
 
                 <div class="text-center scroll-reveal hover-lift" style="transition-delay: 0.2s;">
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 bg-primary-100 dark:bg-white dark:bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow">
+                        <svg class="w-8 h-8 text-primary-600 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                         </svg>
                     </div>
@@ -393,8 +544,8 @@
                 </div>
 
                 <div class="text-center scroll-reveal hover-lift" style="transition-delay: 0.4s;">
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 bg-primary-100 dark:bg-white dark:bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary-600 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                     </div>
@@ -415,7 +566,7 @@
                 Join hundreds of schools already using ILM Possible Education
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style="animation-delay: 0.4s;">
-                <a href="http://localhost:3000/login" class="btn-primary animate-pulse-glow">
+                <a href="/login" class="btn-primary animate-pulse-glow">
                     Start Your Free Trial
                 </a>
                 <a href="#contact" class="btn-secondary">
@@ -434,26 +585,27 @@
                 <p class="text-xl text-gray-600 animate-fade-in-up" style="animation-delay: 0.2s;">Have questions? We're here to help!</p>
             </div>
 
-            <form class="space-y-6 scroll-reveal">
+            <form id="contact-form" class="space-y-6 scroll-reveal">
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500" placeholder="Your name">
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                        <input id="name" name="name" type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500" placeholder="Your name">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                        <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500" placeholder="you@school.com">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input id="email" name="email" type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500" placeholder="you@school.com">
                     </div>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">School Name</label>
-                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500" placeholder="Your school name">
+                    <label for="school_name" class="block text-sm font-medium text-gray-700 mb-2">School Name</label>
+                    <input id="school_name" name="school_name" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500" placeholder="Your school name">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                    <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500" placeholder="Tell us about your requirements..."></textarea>
+                    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                    <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500" placeholder="Tell us about your requirements..."></textarea>
                 </div>
-                <button type="submit" class="w-full btn-primary hover-glow">
+                <div id="form-message" class="hidden p-4 rounded-lg text-sm font-medium"></div>
+                <button type="submit" id="submit-btn" class="w-full btn-primary hover-glow">
                     Send Message
                 </button>
             </form>
@@ -496,7 +648,7 @@
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#features" class="hover:text-white transition">Features</a></li>
                         <li><a href="#modules" class="hover:text-white transition">Modules</a></li>
-                        <li><a href="http://localhost:3000/login" class="hover:text-white transition">Login</a></li>
+                        <li><a href="/login" class="hover:text-white transition">Login</a></li>
                         <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
                     </ul>
                 </div>
