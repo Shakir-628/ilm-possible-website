@@ -361,64 +361,8 @@ new ParticleBackground();
 // ========================================
 // CONTACT FORM
 // ========================================
-
-const contactForm = document.querySelector('#contact form');
-if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        
-        // Get form data
-        const formData = {
-            name: contactForm.querySelector('input[type="text"]').value,
-            email: contactForm.querySelector('input[type="email"]').value,
-            schoolName: contactForm.querySelectorAll('input[type="text"]')[1].value,
-            message: contactForm.querySelector('textarea').value
-        };
-        
-        // Validate
-        if (!formData.name || !formData.email || !formData.message) {
-            showNotification('Please fill in all required fields', 'error');
-            return;
-        }
-        
-        // Show loading state
-        submitBtn.innerHTML = '<svg class="animate-spin inline-block w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Sending...';
-        submitBtn.disabled = true;
-        
-        try {
-            // Send to backend
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-            
-            const result = await response.json();
-            
-            if (response.ok && result.success) {
-                // Show success message
-                showNotification(result.message || 'Thank you! Your message has been sent. Check your email for confirmation.', 'success');
-                
-                // Reset form
-                contactForm.reset();
-            } else {
-                throw new Error(result.message || 'Failed to send message');
-            }
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            showNotification(error.message || 'Sorry, there was an error. Please try WhatsApp: +92-323-2207839', 'error');
-        } finally {
-            // Restore button
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }
-    });
-}
+// Contact form is handled by EmailJS integration below
+// No need for backend API endpoint
 
 // ========================================
 // NOTIFICATION SYSTEM
