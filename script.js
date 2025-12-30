@@ -1,5 +1,5 @@
 // ========================================
-// ILM Possible Education - Enhanced JavaScript
+// ILM Possible Education - Optimized JavaScript
 // ========================================
 
 // ========================================
@@ -32,9 +32,6 @@ class ThemeManager {
     toggle() {
         const newTheme = this.theme === 'light' ? 'dark' : 'light';
         this.applyTheme(newTheme);
-        
-        // Add animation to body
-        document.body.style.transition = 'background-color 0.3s ease';
     }
 
     setupToggle() {
@@ -49,49 +46,17 @@ class ThemeManager {
 const themeManager = new ThemeManager();
 
 // ========================================
-// SMOOTH SCROLLING
-// ========================================
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offsetTop = target.offsetTop - 80; // Account for fixed navbar
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// ========================================
 // NAVBAR SCROLL EFFECTS
 // ========================================
 
-let lastScroll = 0;
 const navbar = document.querySelector('nav');
-
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    // Add shadow on scroll
-    if (currentScroll > 50) {
+    if (window.pageYOffset > 50) {
         navbar?.classList.add('scrolled', 'shadow-xl');
     } else {
         navbar?.classList.remove('scrolled', 'shadow-xl');
     }
-    
-    // Hide/show navbar on scroll
-    if (currentScroll > lastScroll && currentScroll > 500) {
-        navbar?.style.setProperty('transform', 'translateY(-100%)');
-    } else {
-        navbar?.style.setProperty('transform', 'translateY(0)');
-    }
-    
-    lastScroll = currentScroll;
-});
+}, { passive: true });
 
 // ========================================
 // MOBILE MENU
@@ -107,21 +72,12 @@ class MobileMenu {
     }
 
     init() {
-        if (this.menuButton) {
-            this.menuButton.addEventListener('click', () => this.open());
-        }
-        
-        if (this.closeButton) {
-            this.closeButton.addEventListener('click', () => this.close());
-        }
-        
-        if (this.overlay) {
-            this.overlay.addEventListener('click', () => this.close());
-        }
+        this.menuButton?.addEventListener('click', () => this.open());
+        this.closeButton?.addEventListener('click', () => this.close());
+        this.overlay?.addEventListener('click', () => this.close());
 
         // Close menu when clicking on a link
-        const menuLinks = this.menu?.querySelectorAll('a');
-        menuLinks?.forEach(link => {
+        this.menu?.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => this.close());
         });
 
@@ -144,8 +100,7 @@ class MobileMenu {
     }
 }
 
-// Initialize Mobile Menu
-const mobileMenu = new MobileMenu();
+new MobileMenu();
 
 // ========================================
 // SCROLL REVEAL ANIMATIONS
@@ -153,21 +108,16 @@ const mobileMenu = new MobileMenu();
 
 class ScrollReveal {
     constructor() {
-        this.elements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right');
         this.init();
     }
 
     init() {
-        // Initial check for elements already in viewport
-        this.checkElements();
-
-        // Setup Intersection Observer
         const options = {
             threshold: 0.15,
             rootMargin: '0px 0px -100px 0px'
         };
 
-        this.observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
@@ -175,32 +125,14 @@ class ScrollReveal {
             });
         }, options);
 
-        this.elements.forEach(el => this.observer.observe(el));
-    }
-
-    checkElements() {
-        this.elements.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 0.85) {
-                el.classList.add('revealed');
-            }
+        document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right').forEach(el => {
+            observer.observe(el);
         });
-    }
-    
-    refresh() {
-        // Re-query elements and observe them
-        this.elements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right');
-        this.elements.forEach(el => this.observer.observe(el));
-        this.checkElements();
     }
 }
 
-// Store scroll reveal instance globally
-let scrollRevealInstance;
-
-// Initialize Scroll Reveal
 document.addEventListener('DOMContentLoaded', () => {
-    scrollRevealInstance = new ScrollReveal();
+    new ScrollReveal();
 });
 
 // ========================================
@@ -230,9 +162,8 @@ class AnimatedCounter {
     }
 
     animate() {
-        const start = 0;
         const increment = this.target / (this.duration / 16);
-        let current = start;
+        let current = 0;
 
         const timer = setInterval(() => {
             current += increment;
@@ -246,74 +177,12 @@ class AnimatedCounter {
     }
 }
 
-// Initialize Counters
 document.querySelectorAll('.stat-number').forEach(el => {
     const target = el.textContent.replace(/\D/g, '');
     const suffix = el.textContent.replace(/\d/g, '');
     el.dataset.suffix = suffix;
     new AnimatedCounter(el, target);
 });
-
-// ========================================
-// FEATURE CARDS ANIMATION
-// ========================================
-
-// Feature cards animation - wait for DOM
-window.addEventListener('load', () => {
-    const featureCards = document.querySelectorAll('.feature-card');
-    featureCards.forEach((card, index) => {
-        // Only add scroll-reveal to cards that are below the fold
-        const rect = card.getBoundingClientRect();
-        if (rect.top > window.innerHeight) {
-            card.classList.add('scroll-reveal');
-            card.style.transitionDelay = `${index * 0.1}s`;
-        } else {
-            // Cards already visible - show them with animation
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                card.style.transition = 'all 0.6s ease-out';
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, index * 100);
-        }
-    });
-    
-    // Refresh scroll reveal to pick up new elements
-    if (scrollRevealInstance) {
-        setTimeout(() => {
-            scrollRevealInstance.refresh();
-        }, 100);
-    }
-});
-
-// ========================================
-// PARALLAX EFFECT
-// ========================================
-
-class ParallaxEffect {
-    constructor() {
-        this.elements = document.querySelectorAll('[data-parallax]');
-        this.init();
-    }
-
-    init() {
-        if (this.elements.length === 0) return;
-
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-
-            this.elements.forEach(el => {
-                const speed = parseFloat(el.dataset.parallax) || 0.5;
-                const yPos = -(scrolled * speed);
-                el.style.transform = `translateY(${yPos}px)`;
-            });
-        });
-    }
-}
-
-// Initialize Parallax
-new ParallaxEffect();
 
 // ========================================
 // PARTICLE BACKGROUND
@@ -323,46 +192,29 @@ class ParticleBackground {
     constructor() {
         this.container = document.getElementById('particles-container');
         if (!this.container) return;
-        
         this.particleCount = window.innerWidth < 768 ? 20 : 50;
         this.init();
     }
 
     init() {
+        const fragment = document.createDocumentFragment();
         for (let i = 0; i < this.particleCount; i++) {
-            this.createParticle();
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            const size = Math.random() * 4 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            fragment.appendChild(particle);
         }
-    }
-
-    createParticle() {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        
-        // Random position
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        
-        // Random animation delay and duration
-        particle.style.animationDelay = Math.random() * 5 + 's';
-        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-        
-        // Random size
-        const size = Math.random() * 4 + 2;
-        particle.style.width = size + 'px';
-        particle.style.height = size + 'px';
-        
-        this.container.appendChild(particle);
+        this.container.appendChild(fragment);
     }
 }
 
-// Initialize Particles
 new ParticleBackground();
-
-// ========================================
-// CONTACT FORM
-// ========================================
-// Contact form is handled by EmailJS integration below
-// No need for backend API endpoint
 
 // ========================================
 // NOTIFICATION SYSTEM
@@ -370,142 +222,75 @@ new ParticleBackground();
 
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
-    notification.className = `fixed top-20 right-4 px-6 py-4 rounded-lg shadow-lg z-50 animate-slide-in-right ${
-        type === 'success' ? 'bg-green-500' : 
-        type === 'error' ? 'bg-red-500' : 
-        'bg-blue-500'
-    } text-white font-semibold`;
+    const bgClass = type === 'success' ? 'bg-green-500' : type === 'error' ? 'bg-red-500' : 'bg-blue-500';
+    notification.className = `fixed top-20 right-4 px-6 py-4 rounded-lg shadow-lg z-50 animate-slide-in-right ${bgClass} text-white font-semibold`;
     notification.textContent = message;
     
     document.body.appendChild(notification);
     
     setTimeout(() => {
-        notification.style.animation = 'fadeOut 0.3s ease-out';
+        notification.style.opacity = '0';
+        notification.style.transition = 'opacity 0.3s ease';
         setTimeout(() => notification.remove(), 300);
     }, 3000);
 }
 
 // ========================================
-// TYPED TEXT EFFECT (for hero section)
+// EMAILJS INTEGRATION
 // ========================================
 
-class TypedText {
-    constructor(element, words, typeSpeed = 100, deleteSpeed = 50, delayBetween = 2000) {
-        this.element = element;
-        this.words = words;
-        this.typeSpeed = typeSpeed;
-        this.deleteSpeed = deleteSpeed;
-        this.delayBetween = delayBetween;
-        this.wordIndex = 0;
-        this.charIndex = 0;
-        this.isDeleting = false;
-        this.type();
+function initEmailJS() {
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleContactForm);
     }
 
-    type() {
-        const currentWord = this.words[this.wordIndex];
-        
-        if (this.isDeleting) {
-            this.charIndex--;
-        } else {
-            this.charIndex++;
-        }
-        
-        this.element.textContent = currentWord.substring(0, this.charIndex);
-        
-        let speed = this.isDeleting ? this.deleteSpeed : this.typeSpeed;
-        
-        if (!this.isDeleting && this.charIndex === currentWord.length) {
-            speed = this.delayBetween;
-            this.isDeleting = true;
-        } else if (this.isDeleting && this.charIndex === 0) {
-            this.isDeleting = false;
-            this.wordIndex = (this.wordIndex + 1) % this.words.length;
-        }
-        
-        setTimeout(() => this.type(), speed);
+    if (window.emailjs) {
+        emailjs.init('usOgKak_u4v48JbBS');
     }
 }
 
-// Initialize typed text if element exists
-const typedElement = document.getElementById('typed-text');
-if (typedElement) {
-    new TypedText(typedElement, ['Education', 'Success', 'Excellence', 'Future']);
-}
+function handleContactForm(e) {
+    e.preventDefault();
+    const submitBtn = document.getElementById('submit-btn');
+    const formMessage = document.getElementById('form-message');
+    const form = e.target;
 
-// ========================================
-// LAZY LOADING IMAGES
-// ========================================
+    if (!window.emailjs) {
+        showNotification('Message service unavailable. Please try again later.', 'error');
+        return;
+    }
 
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.add('loaded');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
 
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
-    });
-}
-
-// ========================================
-// PERFORMANCE OPTIMIZATION
-// ========================================
-
-// Debounce function for scroll events
-function debounce(func, wait = 10) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+    const params = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        school_name: document.getElementById('school_name').value || 'Not specified',
+        message: document.getElementById('message').value
     };
+
+    emailjs.send('service_57oukya', 'template_xk0n3bm', params)
+        .then(() => {
+            formMessage.classList.remove('hidden');
+            formMessage.className = 'p-4 rounded-lg text-sm font-medium bg-green-50 text-green-800 border border-green-200';
+            formMessage.textContent = '✓ Message sent successfully!';
+            form.reset();
+            setTimeout(() => formMessage.classList.add('hidden'), 5000);
+        })
+        .catch((err) => {
+            console.error('EmailJS error:', err);
+            showNotification('Error sending message. Please try again.', 'error');
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+        });
 }
 
 // ========================================
-// EASTER EGG (Konami Code)
-// ========================================
-
-let konamiCode = [];
-const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-
-document.addEventListener('keydown', (e) => {
-    konamiCode.push(e.key);
-    konamiCode = konamiCode.slice(-konamiPattern.length);
-    
-    if (konamiCode.join('') === konamiPattern.join('')) {
-        showNotification('🎉 Easter Egg Found! You unlocked premium features!', 'success');
-        document.body.style.animation = 'gradientShift 3s ease infinite';
-        setTimeout(() => {
-            document.body.style.animation = '';
-        }, 3000);
-    }
-});
-
-// ========================================
-// ACCESSIBILITY IMPROVEMENTS
-// ========================================
-
-// Skip to main content
-document.addEventListener('DOMContentLoaded', () => {
-    const skipLink = document.createElement('a');
-    skipLink.href = '#main-content';
-    skipLink.textContent = 'Skip to main content';
-    skipLink.className = 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-primary-600';
-    document.body.insertBefore(skipLink, document.body.firstChild);
-});
-
-// ========================================
-// INITIALIZATION COMPLETE
+// INITIALIZATION
 // ========================================
 
 window.addEventListener('load', () => {
@@ -513,99 +298,16 @@ window.addEventListener('load', () => {
     initEmailJS();
 });
 
-// ========================================
-// EMAILJS INTEGRATION
-// ========================================
-
-function initEmailJS() {
-    // Attach form handler first so the form never does a normal submit
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', handleContactForm);
+// Konami Code Easter Egg
+let konamiCode = [];
+const konamiPattern = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+document.addEventListener('keydown', (e) => {
+    konamiCode.push(e.key);
+    konamiCode = konamiCode.slice(-10);
+    if (konamiCode.join('') === konamiPattern.join('')) {
+        showNotification('🎉 Easter Egg Found! Premium active!', 'success');
+        document.body.style.animation = 'gradientShift 3s ease infinite';
     }
+});
 
-    // Initialize EmailJS with your public key (if available)
-    // Get your public key from: https://dashboard.emailjs.com/admin/account
-    try {
-        if (window.emailjs && typeof emailjs.init === 'function') {
-            emailjs.init('usOgKak_u4v48JbBS');
-        } else {
-            console.warn('EmailJS library not available. Contact form will show an error or fallback.');
-        }
-    } catch (err) {
-        console.error('EmailJS init failed:', err);
-    }
-}
-
-function handleContactForm(e) {
-    e.preventDefault();
-
-    const submitBtn = document.getElementById('submit-btn');
-    const formMessage = document.getElementById('form-message');
-    const form = e.target;
-
-    // Disable button and show loading state
-    if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-    }
-    if (formMessage) formMessage.classList.add('hidden');
-
-    // Prepare template parameters
-    const templateParams = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        school_name: document.getElementById('school_name').value || 'Not specified',
-        message: document.getElementById('message').value
-    };
-
-    // If EmailJS is not available, show a friendly error and do not submit the form normally
-    if (!window.emailjs || typeof emailjs.send !== 'function') {
-        if (formMessage) {
-            formMessage.classList.remove('hidden');
-            formMessage.className = 'p-4 rounded-lg text-sm font-medium bg-yellow-50 text-yellow-800 border border-yellow-200';
-            formMessage.textContent = '⚠️ Message service currently unavailable. Please try again later or email us directly.';
-        }
-        if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Message';
-        }
-        return;
-    }
-
-    // Send email using EmailJS with existing template
-    emailjs.send('service_57oukya', 'template_xk0n3bm', templateParams)
-        .then((response) => {
-            // Show success message
-            formMessage.classList.remove('hidden');
-            formMessage.className = 'p-4 rounded-lg text-sm font-medium bg-green-50 text-green-800 border border-green-200';
-            formMessage.textContent = '✓ Message sent successfully! We\'ll get back to you soon.';
-
-            // Reset form
-            form.reset();
-
-            // Reset button
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message';
-            }
-
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                formMessage.classList.add('hidden');
-            }, 5000);
-        })
-        .catch((error) => {
-            // Show error message
-            formMessage.classList.remove('hidden');
-            formMessage.className = 'p-4 rounded-lg text-sm font-medium bg-red-50 text-red-800 border border-red-200';
-            formMessage.textContent = '✗ Error sending message. Please try again or contact us directly.';
-
-            // Reset button
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message';
-            }
-        });
-}
 

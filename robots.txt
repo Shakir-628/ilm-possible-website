@@ -1,0 +1,35 @@
+# Robots.txt for ILM Possible Education Website
+# This file helps search engines crawl and index your website efficiently
+
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /login.html
+Allow: /signup.html
+Allow: /styles.css
+Allow: /script.js
+Allow: /assets/
+Allow: /sitemap.xml
+
+# Disallow paths that shouldn't be indexed
+Disallow: /private/
+Disallow: /admin/
+Disallow: /*.pdf$
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific rules for Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 0.5
+
+# Sitemap location
+Sitemap: https://ilm-possible-website-7f8m.vercel.app/sitemap.xml
