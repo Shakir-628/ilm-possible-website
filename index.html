@@ -158,8 +158,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center space-x-2">
-                    <div class="text-2xl font-bold gradient-text">ILM Possible</div>
-                    <span class="text-sm text-gray-500 hidden sm:block">Education</span>
+                    <div class="text-3xl font-extrabold tracking-tighter gradient-text">ILM Possible</div>
+                    <span
+                        class="px-2 py-0.5 text-[10px] uppercase font-bold tracking-widest bg-blue-100 text-blue-600 rounded-full hidden sm:block">SaaS</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#features" class="text-gray-700 hover:text-primary-600 font-medium">Features</a>
@@ -173,7 +174,7 @@
                         <span id="theme-icon" class="theme-toggle-slider">☀️</span>
                     </button>
 
-                    <a href="/login" class="btn-primary">
+                    <a href="/login" class="btn-premium">
                         Get Started
                     </a>
 
@@ -219,8 +220,14 @@
     </div>
 
     <!-- Hero Section -->
-    <section id="main-content"
-        class="hero-section pt-24 pb-20 bg-gradient-to-br from-primary-50 via-purple-50 to-pink-50 relative overflow-hidden">
+    <section id="main-content" class="hero-section pt-20 pb-16 relative overflow-hidden perspective-1000">
+        <!-- Modern SaaS Decor -->
+        <div class="hero-blob top-[-100px] left-[-100px] animate-spin-slow"></div>
+        <div class="hero-blob bottom-[-100px] right-[-100px] animate-pulse-glow"
+            style="background: var(--brand-secondary)"></div>
+        <div class="hero-shape w-24 h-24 top-20 right-1/4 animate-float-y" style="animation-delay: 1s;"></div>
+        <div class="hero-shape w-16 h-16 bottom-20 left-1/4 animate-float-y" style="animation-delay: 2s;"></div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="text-center md:text-left scroll-reveal">
@@ -235,7 +242,7 @@
                     </p>
                     <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-fade-in-up"
                         style="animation-delay: 0.4s;">
-                        <a href="/login" class="btn-primary animate-pulse-glow">
+                        <a href="/login" class="btn-premium">
                             Start Free Trial
                         </a>
                         <a href="#features" class="btn-secondary">
@@ -273,11 +280,11 @@
                 <div class="hidden md:block scroll-reveal-right">
                     <div class="relative animate-float">
                         <div
-                            class="absolute inset-0 bg-gradient-to-r from-primary-700 to-secondary-600 rounded-3xl blur-2xl opacity-30 animate-pulse-glow">
+                            class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-[2rem] blur-3xl opacity-20 group-hover:opacity-40 transition-opacity">
                         </div>
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop"
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop"
                             alt="School Management"
-                            class="relative rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500">
+                            class="hero-mockup relative rounded-[2rem] shadow-2xl border-4 border-white/20">
                     </div>
                 </div>
             </div>
@@ -288,21 +295,29 @@
     <section class="py-12 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="scroll-reveal hover-lift">
-                    <div class="stat-number">50+</div>
-                    <div class="text-gray-600 mt-2">Features</div>
+                <div class="scroll-reveal">
+                    <div class="stat-card glass hover-3d">
+                        <div class="stat-number" data-target="50" data-suffix="+">0</div>
+                        <div class="text-gray-600 font-semibold">Features</div>
+                    </div>
                 </div>
-                <div class="scroll-reveal hover-lift" style="transition-delay: 0.1s;">
-                    <div class="stat-number">1000+</div>
-                    <div class="text-gray-600 mt-2">Schools Using</div>
+                <div class="scroll-reveal" style="transition-delay: 0.1s;">
+                    <div class="stat-card glass hover-3d">
+                        <div class="stat-number" data-target="1000" data-suffix="+">0</div>
+                        <div class="text-gray-600 font-semibold">Schools Using</div>
+                    </div>
                 </div>
-                <div class="scroll-reveal hover-lift" style="transition-delay: 0.2s;">
-                    <div class="stat-number">99.9%</div>
-                    <div class="text-gray-600 mt-2">Uptime</div>
+                <div class="scroll-reveal" style="transition-delay: 0.2s;">
+                    <div class="stat-card glass hover-3d">
+                        <div class="stat-number" data-target="99.9" data-suffix="%">0</div>
+                        <div class="text-gray-600 font-semibold">Uptime</div>
+                    </div>
                 </div>
-                <div class="scroll-reveal hover-lift" style="transition-delay: 0.3s;">
-                    <div class="stat-number">24/7</div>
-                    <div class="text-gray-600 mt-2">Support</div>
+                <div class="scroll-reveal" style="transition-delay: 0.3s;">
+                    <div class="stat-card glass hover-3d">
+                        <div class="stat-number" data-target="24" data-suffix="/7">0</div>
+                        <div class="text-gray-600 font-semibold">Support</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -322,92 +337,98 @@
 
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
-                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl">
+                <div class="card-3d hover-3d glass scroll-reveal">
                     <div
-                        class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm shrink-0">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
                             </path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Student Management</h3>
-                    <p class="text-gray-600">Complete student profiles, admissions, attendance tracking, and performance
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Student Management</h3>
+                    <p class="text-gray-600 leading-relaxed">Complete student profiles, admissions, attendance tracking,
+                        and performance
                         analytics.</p>
                 </div>
 
                 <!-- Feature 2 -->
-                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl">
+                <div class="card-3d hover-3d glass scroll-reveal" style="transition-delay: 0.1s;">
                     <div
-                        class="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm shrink-0">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
                             </path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Academic Excellence</h3>
-                    <p class="text-gray-600">Timetable management, assignments, exams, grades, and report cards in one
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Academic Excellence</h3>
+                    <p class="text-gray-600 leading-relaxed">Timetable management, assignments, exams, grades, and
+                        report cards in one
                         place.</p>
                 </div>
 
                 <!-- Feature 3 -->
-                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl">
+                <div class="card-3d hover-3d glass scroll-reveal" style="transition-delay: 0.2s;">
                     <div
-                        class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm shrink-0">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
                             </path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Financial Management</h3>
-                    <p class="text-gray-600">Fee collection, invoicing, expense tracking, payroll, and comprehensive
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Financial Management</h3>
+                    <p class="text-gray-600 leading-relaxed">Fee collection, invoicing, expense tracking, payroll, and
+                        comprehensive
                         reports.</p>
                 </div>
 
                 <!-- Feature 4 -->
-                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl">
+                <div class="card-3d hover-3d glass scroll-reveal">
                     <div
-                        class="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm shrink-0">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
                             </path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Attendance Tracking</h3>
-                    <p class="text-gray-600">Real-time attendance, automated alerts, detailed analytics, and parent
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Attendance Tracking</h3>
+                    <p class="text-gray-600 leading-relaxed">Real-time attendance, automated alerts, detailed analytics,
+                        and parent
                         notifications.</p>
                 </div>
 
                 <!-- Feature 5 -->
-                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl">
+                <div class="card-3d hover-3d glass scroll-reveal" style="transition-delay: 0.1s;">
                     <div
-                        class="w-14 h-14 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm shrink-0">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
                             </path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Certificates & Documents</h3>
-                    <p class="text-gray-600">Generate certificates, ID cards, transfer certificates with digital
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Certificates & Documents</h3>
+                    <p class="text-gray-600 leading-relaxed">Generate certificates, ID cards, transfer certificates with
+                        digital
                         verification.</p>
                 </div>
 
                 <!-- Feature 6 -->
-                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl">
+                <div class="card-3d hover-3d glass scroll-reveal" style="transition-delay: 0.2s;">
                     <div
-                        class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm shrink-0">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
                             </path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Analytics & Reports</h3>
-                    <p class="text-gray-600">Powerful insights, customizable reports, and data-driven decision making
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Analytics & Reports</h3>
+                    <p class="text-gray-600 leading-relaxed">Powerful insights, customizable reports, and data-driven
+                        decision making
                         tools.</p>
                 </div>
             </div>
@@ -427,90 +448,121 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="module-card bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl scroll-reveal">
-                    <h4 class="font-bold text-gray-900 mb-3">👥 Student Module</h4>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li>• Student Profiles</li>
-                        <li>• Admission Management</li>
-                        <li>• ID Card Generation</li>
-                        <li>• Attendance Tracking</li>
+                <div class="card-3d hover-3d glass scroll-reveal">
+                    <h4 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <span
+                            class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mr-3 text-sm">👥</span>
+                        Student Module
+                    </h4>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li class="flex items-center"><span class="mr-2 text-blue-500">•</span> Student Profiles</li>
+                        <li class="flex items-center"><span class="mr-2 text-blue-500">•</span> Admission Management
+                        </li>
+                        <li class="flex items-center"><span class="mr-2 text-blue-500">•</span> ID Card Generation</li>
+                        <li class="flex items-center"><span class="mr-2 text-blue-500">•</span> Attendance Tracking</li>
                     </ul>
                 </div>
 
-                <div class="module-card bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl scroll-reveal"
-                    style="transition-delay: 0.1s;">
-                    <h4 class="font-bold text-gray-900 mb-3">👨‍🏫 Teacher Module</h4>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li>• Teacher Profiles</li>
-                        <li>• Performance Reviews</li>
-                        <li>• Payroll Management</li>
-                        <li>• Subject Assignment</li>
+                <div class="card-3d hover-3d glass scroll-reveal" style="transition-delay: 0.1s;">
+                    <h4 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <span
+                            class="w-8 h-8 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mr-3 text-sm">👨‍🏫</span>
+                        Teacher Module
+                    </h4>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li class="flex items-center"><span class="mr-2 text-green-500">•</span> Teacher Profiles</li>
+                        <li class="flex items-center"><span class="mr-2 text-green-500">•</span> Performance Reviews
+                        </li>
+                        <li class="flex items-center"><span class="mr-2 text-green-500">•</span> Payroll Management</li>
+                        <li class="flex items-center"><span class="mr-2 text-green-500">•</span> Subject Assignment</li>
                     </ul>
                 </div>
 
-                <div class="module-card bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl scroll-reveal"
-                    style="transition-delay: 0.2s;">
-                    <h4 class="font-bold text-gray-900 mb-3">📚 Academic Module</h4>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li>• Class Management</li>
-                        <li>• Timetable Creation</li>
-                        <li>• Assignment System</li>
-                        <li>• Exam Schedules</li>
+                <div class="card-3d hover-3d glass scroll-reveal" style="transition-delay: 0.2s;">
+                    <h4 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <span
+                            class="w-8 h-8 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mr-3 text-sm">📚</span>
+                        Academic Module
+                    </h4>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li class="flex items-center"><span class="mr-2 text-purple-500">•</span> Class Management</li>
+                        <li class="flex items-center"><span class="mr-2 text-purple-500">•</span> Timetable Creation
+                        </li>
+                        <li class="flex items-center"><span class="mr-2 text-purple-500">•</span> Assignment System</li>
+                        <li class="flex items-center"><span class="mr-2 text-purple-500">•</span> Exam Schedules</li>
                     </ul>
                 </div>
 
-                <div class="module-card bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl scroll-reveal"
-                    style="transition-delay: 0.3s;">
-                    <h4 class="font-bold text-gray-900 mb-3">💰 Finance Module</h4>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li>• Fee Management</li>
-                        <li>• Payment Tracking</li>
-                        <li>• Invoicing System</li>
-                        <li>• Financial Reports</li>
+                <div class="card-3d hover-3d glass scroll-reveal" style="transition-delay: 0.3s;">
+                    <h4 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <span
+                            class="w-8 h-8 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center mr-3 text-sm">💰</span>
+                        Finance Module
+                    </h4>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li class="flex items-center"><span class="mr-2 text-yellow-500">•</span> Fee Management</li>
+                        <li class="flex items-center"><span class="mr-2 text-yellow-500">•</span> Payment Tracking</li>
+                        <li class="flex items-center"><span class="mr-2 text-yellow-500">•</span> Invoicing System</li>
+                        <li class="flex items-center"><span class="mr-2 text-yellow-500">•</span> Financial Reports</li>
                     </ul>
                 </div>
 
-                <div class="module-card bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl scroll-reveal"
-                    style="transition-delay: 0.4s;">
-                    <h4 class="font-bold text-gray-900 mb-3">📊 Reports & Analytics</h4>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li>• Performance Analytics</li>
-                        <li>• Custom Reports</li>
-                        <li>• Export to PDF/Excel</li>
-                        <li>• Real-time Dashboard</li>
+                <div class="card-3d hover-3d glass scroll-reveal" style="transition-delay: 0.4s;">
+                    <h4 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <span
+                            class="w-8 h-8 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mr-3 text-sm">📊</span>
+                        Reports & Analytics
+                    </h4>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li class="flex items-center"><span class="mr-2 text-red-500">•</span> Performance Analytics
+                        </li>
+                        <li class="flex items-center"><span class="mr-2 text-red-500">•</span> Custom Reports</li>
+                        <li class="flex items-center"><span class="mr-2 text-red-500">•</span> Export to PDF/Excel</li>
+                        <li class="flex items-center"><span class="mr-2 text-red-500">•</span> Real-time Dashboard</li>
                     </ul>
                 </div>
 
-                <div class="module-card bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 rounded-xl scroll-reveal"
-                    style="transition-delay: 0.5s;">
-                    <h4 class="font-bold text-gray-900 mb-3">📢 Communication</h4>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li>• Announcements</li>
-                        <li>• Messaging System</li>
-                        <li>• Email Notifications</li>
-                        <li>• SMS Alerts</li>
+                <div class="card-3d hover-3d glass scroll-reveal" style="transition-delay: 0.5s;">
+                    <h4 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <span
+                            class="w-8 h-8 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mr-3 text-sm">📢</span>
+                        Communication
+                    </h4>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li class="flex items-center"><span class="mr-2 text-indigo-500">•</span> Announcements</li>
+                        <li class="flex items-center"><span class="mr-2 text-indigo-500">•</span> Messaging System</li>
+                        <li class="flex items-center"><span class="mr-2 text-indigo-500">•</span> Email Notifications
+                        </li>
+                        <li class="flex items-center"><span class="mr-2 text-indigo-500">•</span> SMS Alerts</li>
                     </ul>
                 </div>
 
-                <div class="module-card bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-xl scroll-reveal"
-                    style="transition-delay: 0.6s;">
-                    <h4 class="font-bold text-gray-900 mb-3">📜 Certificates</h4>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li>• Digital Certificates</li>
-                        <li>• Custom Templates</li>
-                        <li>• QR Verification</li>
-                        <li>• Bulk Generation</li>
+                <div class="card-3d hover-3d glass scroll-reveal" style="transition-delay: 0.6s;">
+                    <h4 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <span
+                            class="w-8 h-8 bg-pink-100 text-pink-600 rounded-lg flex items-center justify-center mr-3 text-sm">📜</span>
+                        Certificates
+                    </h4>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li class="flex items-center"><span class="mr-2 text-pink-500">•</span> Digital Certificates
+                        </li>
+                        <li class="flex items-center"><span class="mr-2 text-pink-500">•</span> Custom Templates</li>
+                        <li class="flex items-center"><span class="mr-2 text-pink-500">•</span> QR Verification</li>
+                        <li class="flex items-center"><span class="mr-2 text-pink-500">•</span> Bulk Generation</li>
                     </ul>
                 </div>
 
-                <div class="module-card bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-xl scroll-reveal"
-                    style="transition-delay: 0.7s;">
-                    <h4 class="font-bold text-gray-900 mb-3">🔒 Security</h4>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li>• Role-Based Access</li>
-                        <li>• Audit Logging</li>
-                        <li>• Data Encryption</li>
-                        <li>• Backup System</li>
+                <div class="card-3d hover-3d glass scroll-reveal" style="transition-delay: 0.7s;">
+                    <h4 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <span
+                            class="w-8 h-8 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center mr-3 text-sm">🔒</span>
+                        Security
+                    </h4>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li class="flex items-center"><span class="mr-2 text-teal-500">•</span> Role-Based Access</li>
+                        <li class="flex items-center"><span class="mr-2 text-teal-500">•</span> Audit Logging</li>
+                        <li class="flex items-center"><span class="mr-2 text-teal-500">•</span> Data Encryption</li>
+                        <li class="flex items-center"><span class="mr-2 text-teal-500">•</span> Backup System</li>
                     </ul>
                 </div>
             </div>
@@ -528,45 +580,32 @@
 
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <!-- Basic Plan -->
-                <div
-                    class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition">
-                    <div class="p-8 text-center">
+                <div class="card-3d hover-3d glass scroll-reveal">
+                    <div class="text-center">
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">Basic</h3>
                         <p class="text-gray-600 mb-6">Perfect for small schools</p>
                         <div class="mb-8">
                             <span class="text-5xl font-bold text-gray-900">PKR 3,000</span>
                             <span class="text-gray-500">/month</span>
-                            <p class="text-sm text-gray-500 mt-2">Billed annually at <span class="line-through">PKR
-                                    36,000</span> <span class="font-bold text-primary-600">PKR 30,600</span> <span
-                                    class="text-xs">(15% off)</span></p>
+                            <p class="text-sm text-gray-600 mt-2">Billed annually</p>
                         </div>
-                        <a href="/signup?plan=basic"
-                            class="block w-full bg-gray-100 text-gray-800 font-medium py-3 px-6 rounded-lg hover:bg-gray-200 transition mb-6">
+                        <a href="/signup?plan=basic" class="btn-secondary w-full text-center mb-8">
                             Get Started
                         </a>
-                        <ul class="space-y-3 text-left">
+                        <ul class="space-y-4 text-left">
                             <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                <span
+                                    class="w-5 h-5 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-3 text-[10px] font-bold">✓</span>
                                 Up to 500 Students
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                <span
+                                    class="w-5 h-5 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-3 text-[10px] font-bold">✓</span>
                                 Basic Reports
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                <span
+                                    class="w-5 h-5 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-3 text-[10px] font-bold">✓</span>
                                 Email Support
                             </li>
                         </ul>
@@ -574,118 +613,85 @@
                 </div>
 
                 <!-- Popular Plan -->
-                <div
-                    class="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-primary-500 transform scale-105 relative">
+                <div class="card-3d hover-3d glass border-2 border-blue-500 scale-105 z-10 scroll-reveal"
+                    style="transition-delay: 0.1s;">
                     <div
-                        class="absolute top-0 right-0 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                        MOST POPULAR</div>
-                    <div class="p-8 text-center">
+                        class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap">
+                        MOST POPULAR
+                    </div>
+                    <div class="text-center">
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">Pro</h3>
-                        <p class="text-gray-600 mb-6">Ideal for growing schools</p>
+                        <p class="text-gray-600 mb-6">Ideal for growing institutions</p>
                         <div class="mb-8">
                             <span class="text-5xl font-bold text-gray-900">PKR 7,000</span>
                             <span class="text-gray-500">/month</span>
-                            <p class="text-sm text-gray-500 mt-2">Billed annually at <span class="line-through">PKR
-                                    84,000</span> <span class="font-bold text-primary-600">PKR 71,400</span> <span
-                                    class="text-xs">(15% off)</span></p>
+                            <p class="text-sm text-gray-600 mt-2">Billed annually</p>
                         </div>
-                        <a href="/signup?plan=pro"
-                            class="block w-full bg-gradient-to-r from-primary-700 to-secondary-600 text-white font-medium py-3 px-6 rounded-lg hover:opacity-90 transition mb-6">
+                        <a href="/signup?plan=pro" class="btn-premium w-full text-center mb-8">
                             Get Started
                         </a>
-                        <ul class="space-y-3 text-left">
+                        <ul class="space-y-4 text-left">
                             <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Up to 500 Students
+                                <span
+                                    class="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center mr-3 text-[10px] font-bold">✓</span>
+                                Up to 2,000 Students
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                <span
+                                    class="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center mr-3 text-[10px] font-bold">✓</span>
                                 Advanced Analytics
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                <span
+                                    class="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center mr-3 text-[10px] font-bold">✓</span>
                                 Priority Support
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                API Access
+                                <span
+                                    class="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center mr-3 text-[10px] font-bold">✓</span>
+                                Academic Features
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Enterprise Plan -->
-                <div
-                    class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition">
-                    <div class="p-8 text-center">
+                <div class="card-3d hover-3d glass scroll-reveal" style="transition-delay: 0.2s;">
+                    <div class="text-center">
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
                         <p class="text-gray-600 mb-6">For large institutions</p>
                         <div class="mb-8">
                             <span class="text-5xl font-bold text-gray-900">PKR 15,000</span>
                             <span class="text-gray-500">/month</span>
-                            <p class="text-sm text-gray-500 mt-2">Billed annually at <span class="line-through">PKR
-                                    180,000</span> <span class="font-bold text-primary-600">PKR 144,000</span> <span
-                                    class="text-xs">(20% off)</span></p>
+                            <p class="text-sm text-gray-600 mt-2">Billed annually</p>
                         </div>
-                        <a href="/contact"
-                            class="block w-full bg-gray-100 text-gray-800 font-medium py-3 px-6 rounded-lg hover:bg-gray-200 transition mb-6">
+                        <a href="/contact" class="btn-secondary w-full text-center mb-8">
                             Contact Sales
                         </a>
-                        <ul class="space-y-3 text-left">
+                        <ul class="space-y-4 text-left">
                             <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                <span
+                                    class="w-5 h-5 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-3 text-[10px] font-bold">✓</span>
                                 Unlimited Students
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                <span
+                                    class="w-5 h-5 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-3 text-[10px] font-bold">✓</span>
                                 Custom Reports
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                <span
+                                    class="w-5 h-5 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-3 text-[10px] font-bold">✓</span>
                                 24/7 Dedicated Support
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                <span
+                                    class="w-5 h-5 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-3 text-[10px] font-bold">✓</span>
                                 Custom Integrations
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                <span
+                                    class="w-5 h-5 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-3 text-[10px] font-bold">✓</span>
                                 Onboarding & Training
                             </li>
                         </ul>
@@ -716,45 +722,42 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center scroll-reveal hover-lift">
+                <div class="card-3d hover-3d glass text-center scroll-reveal">
                     <div
-                        class="w-16 h-16 bg-primary-100 dark:bg-white dark:bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-primary-600 dark:text-white" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
+                        class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 shrink-0">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Lightning Fast</h3>
-                    <p class="text-primary-100">Optimized performance for instant access to all features</p>
+                    <h3 class="text-xl font-bold mb-4 text-gray-900">Lightning Fast</h3>
+                    <p class="text-gray-600">Optimized performance for instant access to all features</p>
                 </div>
 
-                <div class="text-center scroll-reveal hover-lift" style="transition-delay: 0.2s;">
+                <div class="card-3d hover-3d glass text-center scroll-reveal" style="transition-delay: 0.2s;">
                     <div
-                        class="w-16 h-16 bg-primary-100 dark:bg-white dark:bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow">
-                        <svg class="w-8 h-8 text-primary-600 dark:text-white" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
+                        class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shrink-0">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
                             </path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Secure & Reliable</h3>
-                    <p class="text-primary-100">Enterprise-grade security with automatic backups</p>
+                    <h3 class="text-xl font-bold mb-4 text-gray-900">Secure & Reliable</h3>
+                    <p class="text-gray-600">Enterprise-grade security with automatic backups</p>
                 </div>
 
-                <div class="text-center scroll-reveal hover-lift" style="transition-delay: 0.4s;">
+                <div class="card-3d hover-3d glass text-center scroll-reveal" style="transition-delay: 0.4s;">
                     <div
-                        class="w-16 h-16 bg-primary-100 dark:bg-white dark:bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-primary-600 dark:text-white" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
+                        class="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shrink-0">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
                             </path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Beautiful UI</h3>
-                    <p class="text-primary-100">Modern, intuitive interface designed for all users</p>
+                    <h3 class="text-xl font-bold mb-4 text-gray-900">Beautiful UI</h3>
+                    <p class="text-gray-600">Modern, intuitive interface designed for all users</p>
                 </div>
             </div>
         </div>

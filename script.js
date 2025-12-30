@@ -21,7 +21,7 @@ class ThemeManager {
         document.documentElement.setAttribute('data-theme', theme);
         this.theme = theme;
         localStorage.setItem('theme', theme);
-        
+
         // Update toggle button icon
         const themeIcon = document.getElementById('theme-icon');
         if (themeIcon) {
@@ -140,10 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // ========================================
 
 class AnimatedCounter {
-    constructor(element, target, duration = 2000) {
+    constructor(element) {
         this.element = element;
-        this.target = parseInt(target);
-        this.duration = duration;
+        this.target = parseFloat(element.dataset.target);
+        this.suffix = element.dataset.suffix || '';
+        this.duration = 2000;
         this.hasAnimated = false;
         this.setupObserver();
     }
@@ -157,31 +158,40 @@ class AnimatedCounter {
                 }
             });
         }, { threshold: 0.5 });
-
         observer.observe(this.element);
     }
 
     animate() {
-        const increment = this.target / (this.duration / 16);
-        let current = 0;
+        const startTime = performance.now();
+        const startValue = 0;
 
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= this.target) {
-                this.element.textContent = this.target + (this.element.dataset.suffix || '');
-                clearInterval(timer);
+        const update = (currentTime) => {
+            const elapsedTime = currentTime - startTime;
+            const progress = Math.min(elapsedTime / this.duration, 1);
+
+            // Ease out quad
+            const easeProgress = progress * (2 - progress);
+            const currentValue = startValue + (this.target - startValue) * easeProgress;
+
+            if (this.target % 1 === 0) {
+                this.element.textContent = Math.floor(currentValue) + this.suffix;
             } else {
-                this.element.textContent = Math.floor(current) + (this.element.dataset.suffix || '');
+                this.element.textContent = currentValue.toFixed(1) + this.suffix;
             }
-        }, 16);
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                this.element.textContent = this.target + this.suffix;
+            }
+        };
+
+        requestAnimationFrame(update);
     }
 }
 
 document.querySelectorAll('.stat-number').forEach(el => {
-    const target = el.textContent.replace(/\D/g, '');
-    const suffix = el.textContent.replace(/\d/g, '');
-    el.dataset.suffix = suffix;
-    new AnimatedCounter(el, target);
+    new AnimatedCounter(el);
 });
 
 // ========================================
@@ -225,9 +235,9 @@ function showNotification(message, type = 'info') {
     const bgClass = type === 'success' ? 'bg-green-500' : type === 'error' ? 'bg-red-500' : 'bg-blue-500';
     notification.className = `fixed top-20 right-4 px-6 py-4 rounded-lg shadow-lg z-50 animate-slide-in-right ${bgClass} text-white font-semibold`;
     notification.textContent = message;
-    
+
     document.body.appendChild(notification);
-    
+
     setTimeout(() => {
         notification.style.opacity = '0';
         notification.style.transition = 'opacity 0.3s ease';
@@ -300,7 +310,7 @@ window.addEventListener('load', () => {
 
 // Konami Code Easter Egg
 let konamiCode = [];
-const konamiPattern = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 document.addEventListener('keydown', (e) => {
     konamiCode.push(e.key);
     konamiCode = konamiCode.slice(-10);
